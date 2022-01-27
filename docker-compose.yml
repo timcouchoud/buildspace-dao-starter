@@ -1,0 +1,15 @@
+version: "3.9" # optional since v1.27.0
+services:
+  client-tealdao:
+    container_name: tealdao
+    build: ./
+    networks:
+      - lb_web
+    environment:
+      - VIRTUAL_HOST=${CLIENT_URL}
+      - LETSENCRYPT_HOST=${CLIENT_URL}
+    # ports:
+    #  - 3000:3000
+networks:
+  lb_web:
+    external: true
